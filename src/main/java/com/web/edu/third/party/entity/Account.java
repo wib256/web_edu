@@ -28,6 +28,12 @@ public class Account {
 	@OneToOne(mappedBy = "account")
 	private Admin admin;
 
+	@OneToOne(mappedBy = "account")
+	private Student student;
+
+	@OneToOne(mappedBy = "account")
+	private Teacher teacher;
+
 	public String getUsername() {
 		return username;
 	}
@@ -74,6 +80,22 @@ public class Account {
 
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 }

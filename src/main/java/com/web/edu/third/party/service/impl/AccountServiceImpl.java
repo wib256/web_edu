@@ -1,5 +1,8 @@
 package com.web.edu.third.party.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ import com.web.edu.third.party.repository.AdminRepository;
 import com.web.edu.third.party.repository.StudentRepository;
 import com.web.edu.third.party.repository.TeacherRepository;
 import com.web.edu.third.party.requestDTO.AccountRequestDTO;
+import com.web.edu.third.party.responseDTO.AccountResponseDTO;
 import com.web.edu.third.party.service.AccountService;
 
 @Service
@@ -87,12 +91,13 @@ public class AccountServiceImpl implements AccountService {
 						throw new ResponseStatusException(HttpStatus.CONFLICT, Constant.DEACTIVE_ACCOUNT);
 					}
 
+				} else {
+					throw new ResponseStatusException(HttpStatus.CONFLICT, Constant.ERROR_PASSWORD);
 				}
 			} else {
 				throw new ResponseStatusException(HttpStatus.CONFLICT, Constant.ERROR_PASSWORD);
 			}
 		}
-		return null;
 	}
 
 	@Override
@@ -109,6 +114,44 @@ public class AccountServiceImpl implements AccountService {
 			accountRepository.save(account);
 			return true;
 		}
+	}
+
+	@Override
+	public List<AccountResponseDTO> getAllAccount() {
+		List<Account> accounts = new ArrayList<Account>();
+		List<AccountResponseDTO> accountResponseDTOs = new ArrayList<AccountResponseDTO>();
+		accounts = accountRepository.findAll();
+		if (!accounts.isEmpty()) {
+			for (Account account : accounts) {
+				AccountResponseDTO accountResponseDTO = new AccountResponseDTO();
+				accountResponseDTO.setEmail(account.getUsername());
+				accountResponseDTO.setStatus(account.getStatus());
+				accountResponseDTO.setRole(account.getRoleId());
+				accountResponseDTO.setPhone(account.getPhone());
+				accountResponseDTOs.add(accountResponseDTO);
+			}
+			return accountResponseDTOs;
+		}
+		return accountResponseDTOs;
+	}
+
+	@Override
+	public List<AccountResponseDTO> getAccountsByUsername(String username) {
+		List<Account> accounts = new ArrayList<Account>();
+		List<AccountResponseDTO> accountResponseDTOs = new ArrayList<AccountResponseDTO>();
+		accounts = accountRepository.findByUsernameContainingIgnoreCase(username);
+		if (!accounts.isEmpty()) {
+			for (Account account : accounts) {
+				AccountResponseDTO accountResponseDTO = new AccountResponseDTO();
+				accountResponseDTO.setEmail(account.getUsername());
+				accountResponseDTO.setStatus(account.getStatus());
+				accountResponseDTO.setRole(account.getRoleId());
+				accountResponseDTO.setPhone(account.getPhone());
+				accountResponseDTOs.add(accountResponseDTO);
+			}
+			return accountResponseDTOs;
+		}
+		return accountResponseDTOs;
 	}
 
 }

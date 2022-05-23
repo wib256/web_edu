@@ -18,4 +18,7 @@ public class Constant {
 	
 	// error course category
 	public static final String ERROR_COURSE_CATEGORY = "Thể loại này đã có";
+	
+	// Quantity
+	public static final String DEFAULT_QUANTITY_OF_PACK = "0";
 }
