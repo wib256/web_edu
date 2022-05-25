@@ -9,5 +9,7 @@ import com.web.edu.third.party.entity.VocabularyPart;
 public interface VocabularyPartRepository extends JpaRepository<VocabularyPart, Integer> {
 	Integer countById(int id);
 
+	VocabularyPart findById(int id);
+
 	List<VocabularyPart> findByNameContainingIgnoreCase(String name);
 }

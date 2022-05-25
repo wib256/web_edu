@@ -57,8 +57,8 @@ public class VocabularyPartServiceImpl implements VocabularyPartService {
 			return false;
 		} else {
 			VocabularyPart vocabularyPart = new VocabularyPart();
-			vocabularyPart = vocabularyPartRepository.getById(id);
-			vocabularyPart.setId(vocabularyPart.getQuantity() + quantity);
+			vocabularyPart = vocabularyPartRepository.findById(id);
+			vocabularyPart.setQuantity(vocabularyPart.getQuantity() + quantity);
 			vocabularyPartRepository.save(vocabularyPart);
 			return true;
 		}
