@@ -11,4 +11,6 @@ public interface VocabularyPackService {
 	Boolean createAVocabularyPack(VocabularyPackRequestDTO dto);
 
 	List<VocabularyPackResponseDTO> getVocabularyPacksByName(String name);
+
+	Boolean updateQuantityOfVocabularyPack(int id, int quantity);
 }

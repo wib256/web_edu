@@ -1,27 +1,9 @@
-package com.web.edu.third.party.entity;
+package com.web.edu.third.party.requestDTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "vocabulary_part")
-public class VocabularyPart {
-	@Id
-	@Column(name = "Id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VocabularyPartRequestDTO {
 	private Integer id;
-
-	@Column(name = "Name")
 	private String name;
-
-	@Column(name = "Quantity")
 	private Integer quantity;
-
-	@Column(name = "Vocabulary_pack_id")
 	private Integer vocabularyPackId;
 
 	public Integer getId() {

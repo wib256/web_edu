@@ -2,12 +2,9 @@ package com.web.edu.third.party.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,10 +26,6 @@ public class Vocabulary {
 
 	@Column(name = "Vocabulaty_part_id")
 	private Integer vocabulatyPartId;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Vocabulaty_part_id")
-	private VocabularyPart vocabularyPart;
 
 	public Integer getId() {
 		return id;
@@ -64,14 +57,6 @@ public class Vocabulary {
 
 	public void setSpelling(String spelling) {
 		this.spelling = spelling;
-	}
-
-	public VocabularyPart getVocabularyPart() {
-		return vocabularyPart;
-	}
-
-	public void setVocabularyPart(VocabularyPart vocabularyPart) {
-		this.vocabularyPart = vocabularyPart;
 	}
 
 	public Integer getVocabulatyPartId() {

@@ -71,4 +71,17 @@ public class VocabularyPackServiceImpl implements VocabularyPackService {
 		return vocabularyPackResponseDTOs;
 	}
 
+	@Override
+	public Boolean updateQuantityOfVocabularyPack(int id, int quantity) {
+		if (vocabularyPackRepository.countById(id) == 0) {
+			return false;
+		} else {
+			VocabularyPack vocabularyPack = new VocabularyPack();
+			vocabularyPack = vocabularyPackRepository.findById(id);
+			vocabularyPack.setQuantity(vocabularyPack.getQuantity() + quantity);
+			vocabularyPackRepository.save(vocabularyPack);
+			return true;
+		}
+	}
+
 }

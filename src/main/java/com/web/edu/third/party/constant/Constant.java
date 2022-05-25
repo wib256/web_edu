@@ -21,4 +21,9 @@ public class Constant {
 	
 	// Quantity
 	public static final String DEFAULT_QUANTITY_OF_PACK = "0";
+	public static final String DEFAULT_INCRESASE_QUANTITY = "1";
+	
+	// status response
+	public static final String OK = "ok";
+	public static final String UNSUCCESS = "unsuccess";
 }

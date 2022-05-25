@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.web.edu.third.party.constant.Constant;
 import com.web.edu.third.party.requestDTO.VocabularyPackRequestDTO;
 import com.web.edu.third.party.responseDTO.VocabularyPackResponseDTO;
 import com.web.edu.third.party.service.VocabularyPackService;
@@ -36,9 +37,9 @@ public class VocabularyPackController {
 	public String createVocabularyPack(@RequestBody VocabularyPackRequestDTO dto) {
 		Boolean check = vocabularyPackService.createAVocabularyPack(dto);
 		if (check) {
-			return "Ok";
+			return Constant.OK;
 		} else {
-			throw new ResponseStatusException(HttpStatus.CONFLICT, "Unsuccessful");
+			throw new ResponseStatusException(HttpStatus.CONFLICT, Constant.UNSUCCESS);
 		}
 	}
 }
