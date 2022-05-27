@@ -12,4 +12,6 @@ public interface VocabularyPartRepository extends JpaRepository<VocabularyPart, 
 	VocabularyPart findById(int id);
 
 	List<VocabularyPart> findByNameContainingIgnoreCase(String name);
+	
+	List<VocabularyPart> findByVocabularyPackId(int vocabularyPackId);
 }

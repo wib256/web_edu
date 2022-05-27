@@ -11,6 +11,8 @@ public interface VocabularyPartService {
 	Boolean createAVocabularyPart(VocabularyPartRequestDTO dto);
 
 	List<VocabularyPart> getVocabularyPartsByName(String name);
+	
+	List<VocabularyPart> getVocabularyPartsByVocabularyPackId(int vocabularyPackId);
 
 	Boolean updateQuantityOfVocabularyPart(int id, int quantity);
 }

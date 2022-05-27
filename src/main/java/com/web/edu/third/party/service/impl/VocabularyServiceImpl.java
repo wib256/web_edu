@@ -47,4 +47,11 @@ public class VocabularyServiceImpl implements VocabularyService {
 		}
 	}
 
+	@Override
+	public List<Vocabulary> getVocabularyByVocabularyPartId(int vocabularyPartId) {
+		List<Vocabulary> vocabularies = new ArrayList<Vocabulary>();
+		vocabularies = vocabularyRepository.findByVocabulatyPartId(vocabularyPartId);
+		return vocabularies;
+	}
+
 }
