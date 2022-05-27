@@ -139,7 +139,7 @@ public class AccountServiceImpl implements AccountService {
 	public List<AccountResponseDTO> getAccountsByUsername(String username) {
 		List<Account> accounts = new ArrayList<Account>();
 		List<AccountResponseDTO> accountResponseDTOs = new ArrayList<AccountResponseDTO>();
-		accounts = accountRepository.findByUsernameContainingIgnoreCase(username);
+		accounts = accountRepository.findAccountByUsernameContainingIgnoreCase(username);
 		if (!accounts.isEmpty()) {
 			for (Account account : accounts) {
 				AccountResponseDTO accountResponseDTO = new AccountResponseDTO();
@@ -152,6 +152,7 @@ public class AccountServiceImpl implements AccountService {
 			return accountResponseDTOs;
 		}
 		return accountResponseDTOs;
+
 	}
 
 }

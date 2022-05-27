@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.web.edu.third.party.constant.Constant;
-import com.web.edu.third.party.entity.CourseCategory;
-import com.web.edu.third.party.repository.CourseCategoryRepository;
-import com.web.edu.third.party.service.CourseCategoryService;
+import com.web.edu.third.party.entity.Category;
+import com.web.edu.third.party.repository.CategoryRepository;
+import com.web.edu.third.party.service.CategoryService;
 
 @Service
-public class CourseCategoryImpl implements CourseCategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
-	CourseCategoryRepository courseCategoryRepository;
+	CategoryRepository courseCategoryRepository;
 
 	@Override
 	public Boolean createCategory(String name) {
 		if (courseCategoryRepository.countByName(name) == 0) {
-			CourseCategory courseCategory = new CourseCategory();
+			Category courseCategory = new Category();
 			courseCategory.setName(name);
 			courseCategoryRepository.save(courseCategory);
 			return true;
@@ -32,8 +32,8 @@ public class CourseCategoryImpl implements CourseCategoryService {
 	}
 
 	@Override
-	public List<CourseCategory> getAllCateCourseCategory() {
-		List<CourseCategory> list = new ArrayList<CourseCategory>();
+	public List<Category> getAllCateCourseCategory() {
+		List<Category> list = new ArrayList<Category>();
 		list = courseCategoryRepository.findAll();
 		return list;
 	}

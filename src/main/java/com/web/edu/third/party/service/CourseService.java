@@ -7,6 +7,8 @@ import com.web.edu.third.party.requestDTO.CourseRequestDTO;
 
 public interface CourseService {
 	Boolean createCoures(CourseRequestDTO dto);
+
 	List<Course> searchCourse(String courseName);
+
 	List<Course> getAllCourse();
 }

@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,12 +18,19 @@ public class CourseCategory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "Name")
-	private String name;
+	@Column(name = "Course_Id")
+	private Integer courseId;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category")
+	@Column(name = "Category_Id")
+	private Integer categoryId;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Course_Id", insertable = false, updatable = false)
 	private Course course;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Category_Id", insertable = false, updatable = false)
+	private Category category;
 
 	public Integer getId() {
 		return id;
@@ -33,12 +40,20 @@ public class CourseCategory {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getCourseId() {
+		return courseId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 }

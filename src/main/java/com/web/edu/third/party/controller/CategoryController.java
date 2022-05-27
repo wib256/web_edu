@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.edu.third.party.entity.CourseCategory;
-import com.web.edu.third.party.service.CourseCategoryService;
+import com.web.edu.third.party.entity.Category;
+import com.web.edu.third.party.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/courseCategory")
-public class CourseCategoryController {
+@RequestMapping("/api/category")
+public class CategoryController {
 	@Autowired
-	CourseCategoryService courseCategoryService;
+	CategoryService courseCategoryService;
 
-	@PostMapping("/category/{name}")
+	@PostMapping("/{name}")
 	public Boolean createCourseCategory(@PathVariable String name) {
 		return courseCategoryService.createCategory(name);
 	}
 
-	@GetMapping("/category")
-	public List<CourseCategory> getAllCategory() {
+	@GetMapping("/getAllCategory")
+	public List<Category> getAllCategory() {
 		return courseCategoryService.getAllCateCourseCategory();
 	}
 }

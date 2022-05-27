@@ -1,10 +1,13 @@
 package com.web.edu.third.party.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,6 +30,9 @@ public class Teacher {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Username", insertable = false, updatable = false)
 	private Account account;
+
+	@OneToMany(mappedBy = "teacher")
+	private List<Homework> homeworks;
 
 	public String getUsername() {
 		return username;

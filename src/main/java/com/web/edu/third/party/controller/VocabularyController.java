@@ -21,7 +21,7 @@ import com.web.edu.third.party.service.VocabularyService;
 public class VocabularyController {
 	@Autowired
 	private VocabularyService vocabularyService;
-	
+
 	@GetMapping("/getAllVocabulary")
 	public List<Vocabulary> getAllVocabularyPack() {
 		return vocabularyService.getAllVocabulary();
