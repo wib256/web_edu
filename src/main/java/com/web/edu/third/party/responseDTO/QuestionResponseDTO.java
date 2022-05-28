@@ -1,47 +1,14 @@
-package com.web.edu.third.party.entity;
+package com.web.edu.third.party.responseDTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "question")
-public class Question {
-	@Id
-	@Column(name = "Id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class QuestionResponseDTO {
 	private Integer id;
-
-	@Column(name = "Homework_id")
 	private Integer homeworkId;
-
-	@Column(name = "Topic")
 	private String topic;
-
-	@Column(name = "Answer_One")
 	private String answerOne;
-
-	@Column(name = "Answer_Two")
 	private String answerTwo;
-
-	@Column(name = "Answer_Three")
 	private String answerThree;
-
-	@Column(name = "Answer_Four")
 	private String answerFour;
-
-	@Column(name = "Correct_Answer")
 	private String correctAnswer;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Homework_id", insertable = false, updatable = false)
-	private Homework homework;
 
 	public Integer getId() {
 		return id;
@@ -105,14 +72,6 @@ public class Question {
 
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
-	}
-
-	public Homework getHomework() {
-		return homework;
-	}
-
-	public void setHomework(Homework homework) {
-		this.homework = homework;
 	}
 
 }
