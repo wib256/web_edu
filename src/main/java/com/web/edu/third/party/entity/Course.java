@@ -30,6 +30,9 @@ public class Course {
 	@OneToMany(mappedBy = "course")
 	private List<Homework> homeworks;
 
+	@OneToMany(mappedBy = "course")
+	private List<StudentCourse> studentCourses;
+
 	public Integer getId() {
 		return id;
 	}
