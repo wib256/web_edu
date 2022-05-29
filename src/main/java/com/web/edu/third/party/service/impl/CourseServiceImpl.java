@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.web.edu.third.party.entity.Course;
+import com.web.edu.third.party.entity.CourseCategory;
 import com.web.edu.third.party.repository.CourseRepository;
 import com.web.edu.third.party.requestDTO.CourseRequestDTO;
+import com.web.edu.third.party.responseDTO.CourseResponseDTO;
 import com.web.edu.third.party.service.CourseCategoryService;
 import com.web.edu.third.party.service.CourseService;
 
@@ -40,17 +42,57 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> searchCourse(String courseName) {
+	public List<CourseResponseDTO> searchCourse(String courseName) {
 		List<Course> courses = new ArrayList<Course>();
+		List<CourseResponseDTO> courseResponseDTOs = new ArrayList<CourseResponseDTO>();
 		courses = courseRepository.getCoursesByName(courseName);
-		return courses;
+		if (!courses.isEmpty()) {
+			for (Course course : courses) {
+				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
+				courseResponseDTO.setId(course.getId());
+				courseResponseDTO.setName(course.getName());
+				courseResponseDTO.setDescription(course.getName());
+				List<String> categoryName = new ArrayList<String>();
+				List<Integer> categoryId = new ArrayList<Integer>();
+				if (!course.getCourseCategories().isEmpty()) {
+					for (CourseCategory courseCategory : course.getCourseCategories()) {
+						categoryName.add(courseCategory.getCategory().getName());
+						categoryId.add(courseCategory.getCategory().getId());
+					}
+				}
+				courseResponseDTO.setCourseCategoriesId(categoryId);
+				courseResponseDTO.setCategoryName(categoryName);
+				courseResponseDTOs.add(courseResponseDTO);
+			}
+		}
+		return courseResponseDTOs;
 	}
 
 	@Override
-	public List<Course> getAllCourse() {
+	public List<CourseResponseDTO> getAllCourse() {
 		List<Course> courses = new ArrayList<Course>();
+		List<CourseResponseDTO> courseResponseDTOs = new ArrayList<CourseResponseDTO>();
 		courses = courseRepository.findAll();
-		return courses;
+		if (!courses.isEmpty()) {
+			for (Course course : courses) {
+				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
+				courseResponseDTO.setId(course.getId());
+				courseResponseDTO.setName(course.getName());
+				courseResponseDTO.setDescription(course.getName());
+				List<String> categoryName = new ArrayList<String>();
+				List<Integer> categoryId = new ArrayList<Integer>();
+				if (!course.getCourseCategories().isEmpty()) {
+					for (CourseCategory courseCategory : course.getCourseCategories()) {
+						categoryName.add(courseCategory.getCategory().getName());
+						categoryId.add(courseCategory.getCategory().getId());
+					}
+				}
+				courseResponseDTO.setCourseCategoriesId(categoryId);
+				courseResponseDTO.setCategoryName(categoryName);
+				courseResponseDTOs.add(courseResponseDTO);
+			}
+		}
+		return courseResponseDTOs;
 	}
 
 }

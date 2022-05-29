@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.edu.third.party.entity.Course;
 import com.web.edu.third.party.requestDTO.CourseRequestDTO;
+import com.web.edu.third.party.responseDTO.CourseResponseDTO;
 import com.web.edu.third.party.service.CourseService;
 
 @RestController
@@ -21,12 +21,12 @@ public class CourseController {
 	private CourseService courseService;
 
 	@GetMapping("/getAllCourse")
-	public List<Course> getAllCourse() {
+	public List<CourseResponseDTO> getAllCourse() {
 		return courseService.getAllCourse();
 	}
 
 	@GetMapping("/getCourseByName/{courseName}")
-	public List<Course> getCourseByName(@PathVariable String courseName) {
+	public List<CourseResponseDTO> getCourseByName(@PathVariable String courseName) {
 		return courseService.searchCourse(courseName);
 	}
 
