@@ -21,8 +21,11 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	@Override
 	public Boolean createStudentCourse(StudentCourseRequestDTO dto) {
 		try {
+			if (studentCourseRepository.countByStudentUsernameAndCourseLevelId(dto.getStudentName(), dto.getCourseLevelId()) > 0) {
+				return false;
+			}
 			StudentCourse studentCourse = new StudentCourse();
-			studentCourse.setCourseId(dto.getCourseId());
+			studentCourse.setCourseLevelId(dto.getCourseLevelId());
 			studentCourse.setStudentName(dto.getStudentName());
 			studentCourseRepository.save(studentCourse);
 			return true;
@@ -40,9 +43,9 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 			for (StudentCourse studentCourse : studentCourses) {
 				StudentCourseResponseDTO studentCourseResponseDTO = new StudentCourseResponseDTO();
 				studentCourseResponseDTO.setId(studentCourse.getId());
-				studentCourseResponseDTO.setCourseId(studentCourse.getCourseId());
+				studentCourseResponseDTO.setCourseLevelId(studentCourse.getCourseLevelId());
 				studentCourseResponseDTO.setStudentName(studentCourse.getStudentName());
-				studentCourseResponseDTO.setCourseName(studentCourse.getCourse().getName());
+				studentCourseResponseDTO.setCourseLevelName(studentCourse.getCourseLevel().getName());
 				studentCourseResponseDTOs.add(studentCourseResponseDTO);
 			}
 		}

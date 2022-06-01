@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.web.edu.third.party.entity.CourseCategory;
 
 public interface CourseCategoryRepository extends JpaRepository<CourseCategory, Integer> {
-
+	Integer countByCourseIdAndCategoryId(int courseId, int categoryId);
 }

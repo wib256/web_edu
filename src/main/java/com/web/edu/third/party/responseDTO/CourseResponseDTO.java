@@ -6,8 +6,9 @@ public class CourseResponseDTO {
 	private Integer id;
 	private String name;
 	private String description;
-	List<String> categoryName;
+	private List<String> categoryName;
 	private List<Integer> courseCategoriesId;
+	private List<CourseLevelResponseDTO> courseLevelResponseDTOs;
 
 	public Integer getId() {
 		return id;
@@ -47,6 +48,14 @@ public class CourseResponseDTO {
 
 	public void setCourseCategoriesId(List<Integer> courseCategoriesId) {
 		this.courseCategoriesId = courseCategoriesId;
+	}
+
+	public List<CourseLevelResponseDTO> getCourseLevelResponseDTOs() {
+		return courseLevelResponseDTOs;
+	}
+
+	public void setCourseLevelResponseDTOs(List<CourseLevelResponseDTO> courseLevelResponseDTOs) {
+		this.courseLevelResponseDTOs = courseLevelResponseDTOs;
 	}
 
 }

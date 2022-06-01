@@ -11,4 +11,6 @@ public interface QuestionService {
 	Boolean createListAQuestion(List<QuestionRequestDTO> dtos);
 
 	List<QuestionResponseDTO> getQuestionsByHomeworkId(int homeworkId);
+	
+	List<QuestionResponseDTO> checkListQuestionsByHomeworkId(int homeworkId);
 }

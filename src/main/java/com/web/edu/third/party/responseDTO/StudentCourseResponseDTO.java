@@ -2,9 +2,9 @@ package com.web.edu.third.party.responseDTO;
 
 public class StudentCourseResponseDTO {
 	private Integer id;
-	private Integer courseId;
+	private Integer courseLevelId;
 	private String studentName;
-	private String courseName;
+	private String courseLevelName;
 
 	public Integer getId() {
 		return id;
@@ -14,12 +14,12 @@ public class StudentCourseResponseDTO {
 		this.id = id;
 	}
 
-	public Integer getCourseId() {
-		return courseId;
+	public Integer getCourseLevelId() {
+		return courseLevelId;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourseLevelId(Integer courseLevelId) {
+		this.courseLevelId = courseLevelId;
 	}
 
 	public String getStudentName() {
@@ -30,12 +30,12 @@ public class StudentCourseResponseDTO {
 		this.studentName = studentName;
 	}
 
-	public String getCourseName() {
-		return courseName;
+	public String getCourseLevelName() {
+		return courseLevelName;
 	}
 
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setCourseLevelName(String courseLevelName) {
+		this.courseLevelName = courseLevelName;
 	}
 
 }

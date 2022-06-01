@@ -34,6 +34,9 @@ public class Student {
 	@OneToMany(mappedBy = "student")
 	private List<StudentCourse> studentCourses;
 
+	@OneToMany(mappedBy = "student")
+	private List<HomeworkResult> homeworkResults;
+
 	public String getUsername() {
 		return username;
 	}

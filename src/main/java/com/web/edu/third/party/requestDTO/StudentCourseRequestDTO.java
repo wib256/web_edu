@@ -1,15 +1,15 @@
 package com.web.edu.third.party.requestDTO;
 
 public class StudentCourseRequestDTO {
-	private Integer courseId;
+	private Integer courseLevelId;
 	private String studentName;
 
-	public Integer getCourseId() {
-		return courseId;
+	public Integer getCourseLevelId() {
+		return courseLevelId;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourseLevelId(Integer courseLevelId) {
+		this.courseLevelId = courseLevelId;
 	}
 
 	public String getStudentName() {

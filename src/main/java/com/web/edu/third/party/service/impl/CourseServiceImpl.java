@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.web.edu.third.party.entity.Course;
 import com.web.edu.third.party.entity.CourseCategory;
+import com.web.edu.third.party.entity.CourseLevel;
 import com.web.edu.third.party.repository.CourseRepository;
 import com.web.edu.third.party.requestDTO.CourseRequestDTO;
+import com.web.edu.third.party.responseDTO.CourseLevelResponseDTO;
 import com.web.edu.third.party.responseDTO.CourseResponseDTO;
 import com.web.edu.third.party.service.CourseCategoryService;
 import com.web.edu.third.party.service.CourseService;
@@ -51,7 +53,7 @@ public class CourseServiceImpl implements CourseService {
 				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
 				courseResponseDTO.setId(course.getId());
 				courseResponseDTO.setName(course.getName());
-				courseResponseDTO.setDescription(course.getName());
+				courseResponseDTO.setDescription(course.getDescription());
 				List<String> categoryName = new ArrayList<String>();
 				List<Integer> categoryId = new ArrayList<Integer>();
 				if (!course.getCourseCategories().isEmpty()) {
@@ -60,6 +62,19 @@ public class CourseServiceImpl implements CourseService {
 						categoryId.add(courseCategory.getCategory().getId());
 					}
 				}
+				List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
+				if (!course.getCourseLevels().isEmpty()) {
+					for (CourseLevel courseLevel : course.getCourseLevels()) {
+						CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
+						courseLevelResponseDTO.setId(courseLevel.getId());
+						courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
+						courseLevelResponseDTO.setDescription(courseLevel.getDescription());
+						courseLevelResponseDTO.setName(courseLevel.getName());
+						courseLevelResponseDTO.setPrice(courseLevel.getPrice());
+						courseLevelResponseDTOs.add(courseLevelResponseDTO);
+					}
+				}
+				courseResponseDTO.setCourseLevelResponseDTOs(courseLevelResponseDTOs);
 				courseResponseDTO.setCourseCategoriesId(categoryId);
 				courseResponseDTO.setCategoryName(categoryName);
 				courseResponseDTOs.add(courseResponseDTO);
@@ -78,7 +93,7 @@ public class CourseServiceImpl implements CourseService {
 				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
 				courseResponseDTO.setId(course.getId());
 				courseResponseDTO.setName(course.getName());
-				courseResponseDTO.setDescription(course.getName());
+				courseResponseDTO.setDescription(course.getDescription());
 				List<String> categoryName = new ArrayList<String>();
 				List<Integer> categoryId = new ArrayList<Integer>();
 				if (!course.getCourseCategories().isEmpty()) {
@@ -87,6 +102,19 @@ public class CourseServiceImpl implements CourseService {
 						categoryId.add(courseCategory.getCategory().getId());
 					}
 				}
+				List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
+				if (!course.getCourseLevels().isEmpty()) {
+					for (CourseLevel courseLevel : course.getCourseLevels()) {
+						CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
+						courseLevelResponseDTO.setId(courseLevel.getId());
+						courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
+						courseLevelResponseDTO.setDescription(courseLevel.getDescription());
+						courseLevelResponseDTO.setName(courseLevel.getName());
+						courseLevelResponseDTO.setPrice(courseLevel.getPrice());
+						courseLevelResponseDTOs.add(courseLevelResponseDTO);
+					}
+				}
+				courseResponseDTO.setCourseLevelResponseDTOs(courseLevelResponseDTOs);
 				courseResponseDTO.setCourseCategoriesId(categoryId);
 				courseResponseDTO.setCategoryName(categoryName);
 				courseResponseDTOs.add(courseResponseDTO);

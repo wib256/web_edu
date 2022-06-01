@@ -80,4 +80,26 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		return questionResponseDTOs;
 	}
+
+	@Override
+	public List<QuestionResponseDTO> checkListQuestionsByHomeworkId(int homeworkId) {
+		List<Question> questions = new ArrayList<Question>();
+		List<QuestionResponseDTO> questionResponseDTOs = new ArrayList<QuestionResponseDTO>();
+		questions = questionRepository.findByHomeworkId(homeworkId);
+		if (!questions.isEmpty()) {
+			for (Question question : questions) {
+				QuestionResponseDTO questionResponseDTO = new QuestionResponseDTO();
+				questionResponseDTO.setId(question.getId());
+				questionResponseDTO.setHomeworkId(question.getHomeworkId());
+				questionResponseDTO.setTopic(question.getTopic());
+				questionResponseDTO.setAnswerOne(question.getAnswerOne());
+				questionResponseDTO.setAnswerTwo(question.getAnswerTwo());
+				questionResponseDTO.setAnswerThree(question.getAnswerThree());
+				questionResponseDTO.setAnswerFour(question.getAnswerFour());
+				questionResponseDTO.setCorrectAnswer(question.getCorrectAnswer());
+				questionResponseDTOs.add(questionResponseDTO);
+			}
+		}
+		return questionResponseDTOs;
+	}
 }

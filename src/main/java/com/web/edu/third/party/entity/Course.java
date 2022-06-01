@@ -31,7 +31,7 @@ public class Course {
 	private List<Homework> homeworks;
 
 	@OneToMany(mappedBy = "course")
-	private List<StudentCourse> studentCourses;
+	private List<CourseLevel> courseLevels;
 
 	public Integer getId() {
 		return id;
@@ -63,6 +63,22 @@ public class Course {
 
 	public void setCourseCategories(List<CourseCategory> courseCategories) {
 		this.courseCategories = courseCategories;
+	}
+
+	public List<Homework> getHomeworks() {
+		return homeworks;
+	}
+
+	public void setHomeworks(List<Homework> homeworks) {
+		this.homeworks = homeworks;
+	}
+
+	public List<CourseLevel> getCourseLevels() {
+		return courseLevels;
+	}
+
+	public void setCourseLevels(List<CourseLevel> courseLevels) {
+		this.courseLevels = courseLevels;
 	}
 
 }

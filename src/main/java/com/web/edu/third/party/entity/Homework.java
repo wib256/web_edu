@@ -44,6 +44,9 @@ public class Homework {
 	@JoinColumn(name = "Teacher_Username", insertable = false, updatable = false)
 	private Teacher teacher;
 
+	@OneToMany(mappedBy = "homework")
+	private List<HomeworkResult> homeworkResults;
+
 	public Integer getId() {
 		return id;
 	}

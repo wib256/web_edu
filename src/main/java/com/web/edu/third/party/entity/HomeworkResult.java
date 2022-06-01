@@ -11,22 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Student_course")
-public class StudentCourse {
+@Table(name = "homework_result")
+public class HomeworkResult {
 	@Id
 	@Column(name = "Id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "Course_level_id")
-	private Integer courseLevelId;
+	@Column(name = "Homework_id")
+	private Integer homeworkId;
 
 	@Column(name = "Student_username")
-	private String studentName;
+	private String studentUsername;
+
+	@Column(name = "Point")
+	private Double point;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Course_level_id", insertable = false, updatable = false)
-	private CourseLevel courseLevel;
+	@JoinColumn(name = "Homework_id", insertable = false, updatable = false)
+	private Homework homework;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Student_username", insertable = false, updatable = false)
@@ -40,28 +43,36 @@ public class StudentCourse {
 		this.id = id;
 	}
 
-	public Integer getCourseLevelId() {
-		return courseLevelId;
+	public Integer getHomeworkId() {
+		return homeworkId;
 	}
 
-	public void setCourseLevelId(Integer courseLevelId) {
-		this.courseLevelId = courseLevelId;
+	public void setHomeworkId(Integer homeworkId) {
+		this.homeworkId = homeworkId;
 	}
 
-	public String getStudentName() {
-		return studentName;
+	public String getStudentUsername() {
+		return studentUsername;
 	}
 
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
+	public void setStudentUsername(String studentUsername) {
+		this.studentUsername = studentUsername;
 	}
 
-	public CourseLevel getCourseLevel() {
-		return courseLevel;
+	public Double getPoint() {
+		return point;
 	}
 
-	public void setCourseLevel(CourseLevel courseLevel) {
-		this.courseLevel = courseLevel;
+	public void setPoint(Double point) {
+		this.point = point;
+	}
+
+	public Homework getHomework() {
+		return homework;
+	}
+
+	public void setHomework(Homework homework) {
+		this.homework = homework;
 	}
 
 	public Student getStudent() {

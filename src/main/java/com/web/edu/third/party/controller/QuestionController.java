@@ -34,4 +34,9 @@ public class QuestionController {
 	public List<QuestionResponseDTO> getQuestionByHomeworkId(@PathVariable int homeworkId) {
 		return questionService.getQuestionsByHomeworkId(homeworkId);
 	}
+
+	@GetMapping("/checkListQuestionsByHomeworkId/{homeworkId}")
+	public List<QuestionResponseDTO> checkListQuestionsByHomeworkId(@PathVariable int homeworkId) {
+		return questionService.checkListQuestionsByHomeworkId(homeworkId);
+	}
 }
