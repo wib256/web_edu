@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.web.edu.third.party.constant.Constant;
 import com.web.edu.third.party.entity.Category;
 import com.web.edu.third.party.repository.CategoryRepository;
+import com.web.edu.third.party.responseDTO.CategoryResponseDTO;
 import com.web.edu.third.party.service.CategoryService;
 
 @Service
@@ -32,10 +33,20 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> getAllCateCourseCategory() {
+	public List<CategoryResponseDTO> getAllCateCourseCategory() {
 		List<Category> list = new ArrayList<Category>();
+		List<CategoryResponseDTO> categoryResponseDTOs = new ArrayList<CategoryResponseDTO>();
 		list = courseCategoryRepository.findAll();
-		return list;
+		if (!list.isEmpty()) {
+			for (Category category : list) {
+				CategoryResponseDTO categoryResponseDTO = new CategoryResponseDTO();
+				categoryResponseDTO.setId(category.getId());
+				categoryResponseDTO.setName(category.getName());
+				categoryResponseDTOs.add(categoryResponseDTO);
+			}
+		}
+
+		return categoryResponseDTOs;
 	}
 
 }

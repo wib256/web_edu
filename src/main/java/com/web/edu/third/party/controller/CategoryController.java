@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.edu.third.party.entity.Category;
+import com.web.edu.third.party.responseDTO.CategoryResponseDTO;
 import com.web.edu.third.party.service.CategoryService;
 
 @RestController
@@ -24,7 +24,7 @@ public class CategoryController {
 	}
 
 	@GetMapping("/getAllCategory")
-	public List<Category> getAllCategory() {
+	public List<CategoryResponseDTO> getAllCategory() {
 		return courseCategoryService.getAllCateCourseCategory();
 	}
 }
