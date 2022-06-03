@@ -87,4 +87,24 @@ public class VocabularyPackServiceImpl implements VocabularyPackService {
 		}
 	}
 
+	@Override
+	public List<VocabularyPackResponseDTO> getVocabularyPacksByCourseLevelId(int courseLevelId) {
+		List<VocabularyPack> vocabularyPacks = new ArrayList<VocabularyPack>();
+		List<VocabularyPackResponseDTO> vocabularyPackResponseDTOs = new ArrayList<VocabularyPackResponseDTO>();
+
+		vocabularyPacks = vocabularyPackRepository.findByCourseLevelId(courseLevelId);
+		if (!vocabularyPacks.isEmpty()) {
+			for (VocabularyPack vocabularyPack : vocabularyPacks) {
+				VocabularyPackResponseDTO vocabularyPackResponseDTO = new VocabularyPackResponseDTO();
+				vocabularyPackResponseDTO.setId(vocabularyPack.getId());
+				vocabularyPackResponseDTO.setCourseLevelId(vocabularyPack.getCourseLevelId());
+				vocabularyPackResponseDTO.setName(vocabularyPack.getName());
+				vocabularyPackResponseDTO.setQuantity(vocabularyPack.getQuantity());
+				vocabularyPackResponseDTOs.add(vocabularyPackResponseDTO);
+			}
+			return vocabularyPackResponseDTOs;
+		}
+		return vocabularyPackResponseDTOs;
+	}
+
 }

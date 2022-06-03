@@ -13,4 +13,6 @@ public interface VocabularyPackService {
 	List<VocabularyPackResponseDTO> getVocabularyPacksByName(String name);
 
 	Boolean updateQuantityOfVocabularyPack(int id, int quantity);
+
+	List<VocabularyPackResponseDTO> getVocabularyPacksByCourseLevelId(int courseLevelId);
 }
