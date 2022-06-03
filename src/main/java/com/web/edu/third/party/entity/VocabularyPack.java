@@ -15,6 +15,9 @@ public class VocabularyPack {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(name = "Course_level_id")
+	private Integer courseLevelId;
+
 	@Column(name = "Name")
 	private String name;
 
@@ -54,6 +57,14 @@ public class VocabularyPack {
 
 	public void setTeachName(String teachName) {
 		this.teachName = teachName;
+	}
+
+	public Integer getCourseLevelId() {
+		return courseLevelId;
+	}
+
+	public void setCourseLevelId(Integer courseLevelId) {
+		this.courseLevelId = courseLevelId;
 	}
 
 }

@@ -21,7 +21,7 @@ public class HomeworkServiceImpl implements HomeworkService {
 	public Boolean craeteHomework(HomeworkRequestDTO dto) {
 		try {
 			Homework homework = new Homework();
-			homework.setCourseId(dto.getCourseId());
+			homework.setCourseLevelId(dto.getCourseLevelId());
 			homework.setDescription(dto.getDescription());
 			homework.setName(dto.getName());
 			homework.setTeacherUsername(dto.getTeacherUsername());
@@ -33,15 +33,15 @@ public class HomeworkServiceImpl implements HomeworkService {
 	}
 
 	@Override
-	public List<HomeworkResponseDTO> getHomeworkByCourseId(int couresId) {
+	public List<HomeworkResponseDTO> getHomeworkByCourseLevelId(int couresLevelId) {
 		List<Homework> homeworks = new ArrayList<Homework>();
 		List<HomeworkResponseDTO> homeworkResponseDTOs = new ArrayList<HomeworkResponseDTO>();
-		homeworks = homeworkRepository.findByCourseId(couresId);
+		homeworks = homeworkRepository.findByCourseLevelId(couresLevelId);
 		if (!homeworks.isEmpty()) {
 			for (Homework homework : homeworks) {
 				HomeworkResponseDTO homeworkResponseDTO = new HomeworkResponseDTO();
 				homeworkResponseDTO.setId(homework.getId());
-				homeworkResponseDTO.setCourseId(homework.getCourseId());
+				homeworkResponseDTO.setCourseLevelId(homework.getCourseLevelId());
 				homeworkResponseDTO.setName(homework.getName());
 				homeworkResponseDTO.setDescription(homework.getDescription());
 				homeworkResponseDTO.setTeacherUsername(homework.getTeacherUsername());
@@ -49,6 +49,11 @@ public class HomeworkServiceImpl implements HomeworkService {
 			}
 		}
 		return homeworkResponseDTOs;
+	}
+
+	@Override
+	public Homework getHomeworkById(int homeworkId) {
+		return homeworkRepository.findById(homeworkId);
 	}
 
 }

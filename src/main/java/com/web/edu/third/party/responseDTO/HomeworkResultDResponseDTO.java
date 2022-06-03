@@ -1,10 +1,13 @@
 package com.web.edu.third.party.responseDTO;
 
+import java.util.List;
+
 public class HomeworkResultDResponseDTO {
 	private Integer id;
 	private Integer homeworkId;
 	private String studentUsername;
 	private Double point;
+	private List<HomeworkResultResponse> homeworkResultResponses;
 
 	public Integer getId() {
 		return id;
@@ -36,6 +39,14 @@ public class HomeworkResultDResponseDTO {
 
 	public void setPoint(Double point) {
 		this.point = point;
+	}
+
+	public List<HomeworkResultResponse> getHomeworkResultResponses() {
+		return homeworkResultResponses;
+	}
+
+	public void setHomeworkResultResponses(List<HomeworkResultResponse> homeworkResultResponses) {
+		this.homeworkResultResponses = homeworkResultResponses;
 	}
 
 }

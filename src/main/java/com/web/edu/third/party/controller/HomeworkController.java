@@ -25,8 +25,8 @@ public class HomeworkController {
 		return homeworkService.craeteHomework(dto);
 	}
 
-	@GetMapping("/getHomeworkByCourseId/{courseId}")
-	public List<HomeworkResponseDTO> getHomeworkByCourseId(@PathVariable int courseId) {
-		return homeworkService.getHomeworkByCourseId(courseId);
+	@GetMapping("/getHomeworkByCourseId/{courseLevelId}")
+	public List<HomeworkResponseDTO> getHomeworkByCourseId(@PathVariable int courseLevelId) {
+		return homeworkService.getHomeworkByCourseLevelId(courseLevelId);
 	}
 }

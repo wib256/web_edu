@@ -28,6 +28,7 @@ public class VocabularyPackServiceImpl implements VocabularyPackService {
 			for (VocabularyPack vocabularyPack : vocabularyPacks) {
 				VocabularyPackResponseDTO vocabularyPackResponseDTO = new VocabularyPackResponseDTO();
 				vocabularyPackResponseDTO.setId(vocabularyPack.getId());
+				vocabularyPackResponseDTO.setCourseLevelId(vocabularyPack.getCourseLevelId());
 				vocabularyPackResponseDTO.setName(vocabularyPack.getName());
 				vocabularyPackResponseDTO.setQuantity(vocabularyPack.getQuantity());
 				vocabularyPackResponseDTOs.add(vocabularyPackResponseDTO);
@@ -41,6 +42,7 @@ public class VocabularyPackServiceImpl implements VocabularyPackService {
 	public Boolean createAVocabularyPack(VocabularyPackRequestDTO dto) {
 		try {
 			VocabularyPack vocabularyPack = new VocabularyPack();
+			vocabularyPack.setCourseLevelId(dto.getCourseLevelId());
 			vocabularyPack.setName(dto.getName());
 			vocabularyPack.setQuantity(Integer.parseInt(Constant.DEFAULT_QUANTITY_OF_PACK));
 			vocabularyPack.setTeachName(dto.getTeachName());
@@ -62,6 +64,7 @@ public class VocabularyPackServiceImpl implements VocabularyPackService {
 			for (VocabularyPack vocabularyPack : vocabularyPacks) {
 				VocabularyPackResponseDTO vocabularyPackResponseDTO = new VocabularyPackResponseDTO();
 				vocabularyPackResponseDTO.setId(vocabularyPack.getId());
+				vocabularyPackResponseDTO.setCourseLevelId(vocabularyPack.getCourseLevelId());
 				vocabularyPackResponseDTO.setName(vocabularyPack.getName());
 				vocabularyPackResponseDTO.setQuantity(vocabularyPack.getQuantity());
 				vocabularyPackResponseDTOs.add(vocabularyPackResponseDTO);

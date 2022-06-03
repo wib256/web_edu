@@ -17,14 +17,14 @@ public class StudentAnswerServiceImpl implements StudentAnswerService {
 	private StudentAnswerRepository studentAnswerRepository;
 
 	@Override
-	public Boolean saveAnswers(List<StudentAnswerRequestDTO> dtos) {
+	public Boolean saveAnswers(List<StudentAnswerRequestDTO> dtos, int homeworkResultId) {
 		try {
 			if (!dtos.isEmpty()) {
 				List<StudentAnswer> studentAnswers = new ArrayList<StudentAnswer>();
 				for (StudentAnswerRequestDTO studentAnswerRequestDTO : dtos) {
 					StudentAnswer studentAnswer = new StudentAnswer();
 					studentAnswer.setAnswer(studentAnswerRequestDTO.getAnswer());
-					studentAnswer.setHomeworkResultId(studentAnswerRequestDTO.getHomeworkResultId());
+					studentAnswer.setHomeworkResultId(homeworkResultId);
 					studentAnswers.add(studentAnswer);
 				}
 				studentAnswerRepository.saveAll(studentAnswers);
@@ -34,6 +34,11 @@ public class StudentAnswerServiceImpl implements StudentAnswerService {
 			return false;
 		}
 		return false;
+	}
+
+	@Override
+	public List<StudentAnswer> getStudentAnswersByHomeworkResultId(int homeworkResultId) {
+		return studentAnswerRepository.findByHomeworkResultId(homeworkResultId);
 	}
 
 }

@@ -1,17 +1,17 @@
 package com.web.edu.third.party.requestDTO;
 
 public class HomeworkRequestDTO {
-	private Integer courseId;
+	private Integer courseLevelId;
 	private String teacherUsername;
 	private String name;
 	private String description;
 
-	public Integer getCourseId() {
-		return courseId;
+	public Integer getCourseLevelId() {
+		return courseLevelId;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourseLevelId(Integer courseLevelId) {
+		this.courseLevelId = courseLevelId;
 	}
 
 	public String getTeacherUsername() {

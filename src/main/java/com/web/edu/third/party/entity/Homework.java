@@ -21,8 +21,8 @@ public class Homework {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "Course_Id")
-	private Integer courseId;
+	@Column(name = "Course_level_id")
+	private Integer courseLevelId;
 
 	@Column(name = "Teacher_Username")
 	private String teacherUsername;
@@ -37,8 +37,8 @@ public class Homework {
 	private List<Question> questions;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Course_Id", insertable = false, updatable = false)
-	private Course course;
+	@JoinColumn(name = "Course_level_id", insertable = false, updatable = false)
+	private CourseLevel courseLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Teacher_Username", insertable = false, updatable = false)
@@ -55,12 +55,12 @@ public class Homework {
 		this.id = id;
 	}
 
-	public Integer getCourseId() {
-		return courseId;
+	public Integer getCourseLevelId() {
+		return courseLevelId;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourseLevelId(Integer courseLevelId) {
+		this.courseLevelId = courseLevelId;
 	}
 
 	public String getTeacherUsername() {
@@ -95,12 +95,20 @@ public class Homework {
 		this.questions = questions;
 	}
 
-	public Course getCourse() {
-		return course;
+	public CourseLevel getCourseLevel() {
+		return courseLevel;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseLevel(CourseLevel courseLevel) {
+		this.courseLevel = courseLevel;
+	}
+
+	public List<HomeworkResult> getHomeworkResults() {
+		return homeworkResults;
+	}
+
+	public void setHomeworkResults(List<HomeworkResult> homeworkResults) {
+		this.homeworkResults = homeworkResults;
 	}
 
 	public Teacher getTeacher() {

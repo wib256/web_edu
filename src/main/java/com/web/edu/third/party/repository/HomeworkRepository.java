@@ -7,5 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.web.edu.third.party.entity.Homework;
 
 public interface HomeworkRepository extends JpaRepository<Homework, Integer> {
-	List<Homework> findByCourseId(int courseId);
+	List<Homework> findByCourseLevelId(int courseLevelId);
+
+	Homework findById(int homeworkId);
 }
