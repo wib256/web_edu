@@ -82,7 +82,7 @@ public class AccountServiceImpl implements AccountService {
 		if (accountRepository.countByUsername(dto.getEmail()) == 0) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, Constant.NOT_FOUND_USERNAME);
 		} else {
-			Account account = accountRepository.findByUsername(dto.getEmail());
+			Account account = accountRepository.getByUsername(dto.getEmail());
 			if (account != null) {
 				if (account.getPassword().compareTo(dto.getPassword()) == 0) {
 					if (account.getStatus().compareTo(Constant.ACTIVE) == 0) {
@@ -105,7 +105,7 @@ public class AccountServiceImpl implements AccountService {
 		if (accountRepository.countByUsername(email) == 0) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, Constant.NOT_FOUND_USERNAME);
 		} else {
-			Account account = accountRepository.findByUsername(email);
+			Account account = accountRepository.getByUsername(email);
 			if (account.getStatus().compareTo(Constant.ACTIVE) == 0) {
 				account.setStatus(Constant.DEACTIVE);
 			} else {
@@ -139,7 +139,7 @@ public class AccountServiceImpl implements AccountService {
 	public List<AccountResponseDTO> getAccountsByUsername(String username) {
 		List<Account> accounts = new ArrayList<Account>();
 		List<AccountResponseDTO> accountResponseDTOs = new ArrayList<AccountResponseDTO>();
-		accounts = accountRepository.findAccountByUsernameContainingIgnoreCase(username);
+		accounts = accountRepository.findByUsernameIgnoreCase(username);
 		if (!accounts.isEmpty()) {
 			for (Account account : accounts) {
 				AccountResponseDTO accountResponseDTO = new AccountResponseDTO();

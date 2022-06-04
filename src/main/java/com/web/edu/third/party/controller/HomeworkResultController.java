@@ -29,4 +29,14 @@ public class HomeworkResultController {
 	public List<HomeworkResultDResponseDTO> getHomeworkResultById(@PathVariable int homeworkId) {
 		return homeworkResultService.getHomeworkResultByHomeworkId(homeworkId);
 	}
+
+	@GetMapping("/getHomeworkResultByHomeworkResultId/{id}")
+	public HomeworkResultDResponseDTO getHomeworkResultByHomeworkResultId(@PathVariable int id) {
+		return homeworkResultService.getHomeworkResultByHomeworkResultId(id);
+	}
+
+	@GetMapping("/getHomeworkResultByHomeworkUsername/{username}")
+	public List<HomeworkResultDResponseDTO> getHomeworkResultByHomeworkResultId(@PathVariable String username) {
+		return homeworkResultService.getHomeworkResultByStudentUsername(username);
+	}
 }

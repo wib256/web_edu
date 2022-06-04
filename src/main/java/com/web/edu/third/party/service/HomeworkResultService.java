@@ -10,7 +10,7 @@ public interface HomeworkResultService {
 
 	HomeworkResultDResponseDTO getHomeworkResultByHomeworkResultId(int homeworkResultId);
 
-	HomeworkResultDResponseDTO getHomeworkResultByStudentUsername(String studentUsername);
+	List<HomeworkResultDResponseDTO> getHomeworkResultByStudentUsername(String studentUsername);
 
 	List<HomeworkResultDResponseDTO> getHomeworkResultByHomeworkId(int homeworkId);
 }

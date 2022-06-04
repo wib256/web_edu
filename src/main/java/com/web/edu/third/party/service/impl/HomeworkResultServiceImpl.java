@@ -74,14 +74,67 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 
 	@Override
 	public HomeworkResultDResponseDTO getHomeworkResultByHomeworkResultId(int homeworkResultId) {
-		// TODO Auto-generated method stub
-		return null;
+		HomeworkResult homeworkResult = homeworkResultRepository.getById(homeworkResultId);
+
+		List<HomeworkResultResponse> homeworkResultResponses = new ArrayList<HomeworkResultResponse>();
+		List<HomeworkResultDResponseDTO> homeworkResultDResponseDTOs = new ArrayList<HomeworkResultDResponseDTO>();
+		if (!homeworkResult.getHomework().getQuestions().isEmpty()) {
+
+			List<StudentAnswer> studentAnswers = studentAnswerService
+					.getStudentAnswersByHomeworkResultId(homeworkResult.getHomeworkId());
+			for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
+				HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
+				homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
+				homeworkResultResponse
+						.setCorrectAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer());
+				homeworkResultResponse.setYourAnwser(studentAnswers.get(i).getAnswer());
+				homeworkResultResponses.add(homeworkResultResponse);
+			}
+			HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
+			homeworkResultDResponseDTO.setHomeworkId(homeworkResult.getHomeworkId());
+			homeworkResultDResponseDTO.setHomeworkResultResponses(homeworkResultResponses);
+			homeworkResultDResponseDTO.setId(homeworkResult.getId());
+			homeworkResultDResponseDTO.setPoint(homeworkResult.getPoint());
+			homeworkResultDResponseDTO.setStudentUsername(homeworkResult.getStudentUsername());
+			homeworkResultDResponseDTOs.add(homeworkResultDResponseDTO);
+		}
+
+		HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
+		homeworkResultDResponseDTO.setId(homeworkResult.getId());
+		homeworkResultDResponseDTO.setHomeworkId(homeworkResult.getHomeworkId());
+		homeworkResultDResponseDTO.setPoint(homeworkResult.getPoint());
+		homeworkResultDResponseDTO.setStudentUsername(homeworkResult.getStudentUsername());
+		homeworkResultDResponseDTO.setHomeworkResultResponses(homeworkResultResponses);
+		return homeworkResultDResponseDTO;
 	}
 
 	@Override
-	public HomeworkResultDResponseDTO getHomeworkResultByStudentUsername(String studentUsername) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<HomeworkResultDResponseDTO> getHomeworkResultByStudentUsername(String studentUsername) {
+		List<HomeworkResult> homeworkResults = homeworkResultRepository.findByStudentUsername(studentUsername);
+		List<HomeworkResultDResponseDTO> homeworkResultDResponseDTOs = new ArrayList<HomeworkResultDResponseDTO>();
+		if (!homeworkResults.isEmpty()) {
+			for (HomeworkResult homeworkResult : homeworkResults) {
+				List<HomeworkResultResponse> homeworkResultResponses = new ArrayList<HomeworkResultResponse>();
+				List<StudentAnswer> studentAnswers = studentAnswerService
+						.getStudentAnswersByHomeworkResultId(homeworkResult.getHomeworkId());
+				for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
+					HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
+					homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
+					homeworkResultResponse
+							.setCorrectAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer());
+					homeworkResultResponse.setYourAnwser(studentAnswers.get(i).getAnswer());
+					homeworkResultResponses.add(homeworkResultResponse);
+				}
+				HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
+				homeworkResultDResponseDTO.setHomeworkId(homeworkResult.getHomeworkId());
+				homeworkResultDResponseDTO.setHomeworkResultResponses(homeworkResultResponses);
+				homeworkResultDResponseDTO.setId(homeworkResult.getId());
+				homeworkResultDResponseDTO.setPoint(homeworkResult.getPoint());
+				homeworkResultDResponseDTO.setStudentUsername(homeworkResult.getStudentUsername());
+				homeworkResultDResponseDTOs.add(homeworkResultDResponseDTO);
+			}
+		}
+		return homeworkResultDResponseDTOs;
 	}
 
 	@Override
