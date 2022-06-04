@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.web.edu.third.party.constant.Constant;
 import com.web.edu.third.party.entity.Homework;
 import com.web.edu.third.party.entity.HomeworkResult;
 import com.web.edu.third.party.entity.StudentAnswer;
@@ -45,8 +46,16 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 					}
 					HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 					homeworkResultResponse.setTopic(homework.getQuestions().get(i).getTopic());
-					homeworkResultResponse.setCorrectAnswer(homework.getQuestions().get(i).getCorrectAnswer());
-					homeworkResultResponse.setYourAnwser(dto.getStudentAnswerRequestDTOs().get(i).getAnswer());
+					homeworkResultResponse.setCorrectAnswer(getAnswer(homework.getQuestions().get(i).getCorrectAnswer(),
+							homework.getQuestions().get(i).getAnswerOne(),
+							homework.getQuestions().get(i).getAnswerTwo(),
+							homework.getQuestions().get(i).getAnswerThree(),
+							homework.getQuestions().get(i).getAnswerFour()));
+					homeworkResultResponse.setYourAnwser(getAnswer(dto.getStudentAnswerRequestDTOs().get(i).getAnswer(),
+							homework.getQuestions().get(i).getAnswerOne(),
+							homework.getQuestions().get(i).getAnswerTwo(),
+							homework.getQuestions().get(i).getAnswerThree(),
+							homework.getQuestions().get(i).getAnswerFour()));
 					homeworkResultResponses.add(homeworkResultResponse);
 				}
 			}
@@ -167,4 +176,19 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 		return homeworkResultDResponseDTOs;
 	}
 
+	private String getAnswer(String yourAnswer, String answerOne, String answerTwo, String answerThree,
+			String answerFour) {
+		switch (yourAnswer) {
+		case Constant.ANSWER_ONE:
+			return answerOne;
+		case Constant.ANSWER_TWO:
+			return answerTwo;
+		case Constant.ANSWER_THREE:
+			return answerThree;
+		case Constant.ANSWER_FOUR:
+			return answerFour;
+		default:
+			return "";
+		}
+	}
 }

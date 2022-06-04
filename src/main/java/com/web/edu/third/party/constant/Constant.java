@@ -15,15 +15,20 @@ public class Constant {
 	public static final String NOT_FOUND_USERNAME = "Tài khoản không chính xác";
 	public static final String ERROR_PASSWORD = "Mật khẩu không chính xác";
 	public static final String DEACTIVE_ACCOUNT = "Tài khoản đã bị khóa";
-	
+
 	// error course category
 	public static final String ERROR_COURSE_CATEGORY = "Thể loại này đã có";
-	
+
 	// Quantity
 	public static final String DEFAULT_QUANTITY_OF_PACK = "0";
 	public static final String DEFAULT_INCRESASE_QUANTITY = "1";
-	
+
 	// status response
 	public static final String OK = "ok";
 	public static final String UNSUCCESS = "unsuccess";
+
+	public static final String ANSWER_ONE = "answerOne";
+	public static final String ANSWER_TWO = "answerTwo";
+	public static final String ANSWER_THREE = "answerThree";
+	public static final String ANSWER_FOUR = "answerFour";
 }
