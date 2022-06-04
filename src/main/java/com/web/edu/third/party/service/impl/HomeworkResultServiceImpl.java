@@ -94,9 +94,19 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 			for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
 				HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 				homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
-				homeworkResultResponse
-						.setCorrectAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer());
-				homeworkResultResponse.setYourAnwser(studentAnswers.get(i).getAnswer());
+				homeworkResultResponse.setCorrectAnswer(
+						getAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer(),
+								homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+								homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+								homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+								homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
+
+				homeworkResultResponse.setYourAnwser(getAnswer(studentAnswers.get(i).getAnswer(),
+						homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+						homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+						homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+						homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
+
 				homeworkResultResponses.add(homeworkResultResponse);
 			}
 			HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
@@ -129,9 +139,18 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 				for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
 					HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 					homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
-					homeworkResultResponse
-							.setCorrectAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer());
-					homeworkResultResponse.setYourAnwser(studentAnswers.get(i).getAnswer());
+					homeworkResultResponse.setCorrectAnswer(
+							getAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
+
+					homeworkResultResponse.setYourAnwser(getAnswer(studentAnswers.get(i).getAnswer(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
 					homeworkResultResponses.add(homeworkResultResponse);
 				}
 				HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
@@ -159,9 +178,18 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 				for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
 					HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 					homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
-					homeworkResultResponse
-							.setCorrectAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer());
-					homeworkResultResponse.setYourAnwser(studentAnswers.get(i).getAnswer());
+					homeworkResultResponse.setCorrectAnswer(
+							getAnswer(homeworkResult.getHomework().getQuestions().get(i).getCorrectAnswer(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+									homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
+
+					homeworkResultResponse.setYourAnwser(getAnswer(studentAnswers.get(i).getAnswer(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerOne(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerTwo(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerThree(),
+							homeworkResult.getHomework().getQuestions().get(i).getAnswerFour()));
 					homeworkResultResponses.add(homeworkResultResponse);
 				}
 				HomeworkResultDResponseDTO homeworkResultDResponseDTO = new HomeworkResultDResponseDTO();
