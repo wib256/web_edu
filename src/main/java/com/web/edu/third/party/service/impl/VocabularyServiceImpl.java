@@ -54,4 +54,42 @@ public class VocabularyServiceImpl implements VocabularyService {
 		return vocabularies;
 	}
 
+	@Override
+	public Boolean editVocabulary(VocabularyRequestDTO dto) {
+		Vocabulary vocabulary = vocabularyRepository.getById(dto.getId());
+		if (vocabulary != null) {
+			if (dto.getEnsWord() != null) {
+				vocabulary.setEnsWord(dto.getEnsWord());
+			}
+			if (dto.getExample() != null) {
+				vocabulary.setExample(dto.getExample());
+			}
+			if (dto.getSpelling() != null) {
+				vocabulary.setSpelling(dto.getSpelling());
+			}
+			if (dto.getVnWord() != null) {
+				vocabulary.setVnWord(dto.getVnWord());
+			}
+			if (dto.getVocabulatyPartId() != null) {
+				vocabulary.setVocabulatyPartId(dto.getVocabulatyPartId());
+			}
+			if (dto.getWordType() != null) {
+				vocabulary.setWordType(dto.getWordType());
+			}
+			vocabularyRepository.save(vocabulary);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean deleteVocabulary(int id) {
+		if (vocabularyRepository.countById(id) > 0) {
+			vocabularyRepository.deleteById(id);
+			vocabularyPartService.updateQuantityOfVocabularyPart(id, -1);
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -56,4 +56,20 @@ public class HomeworkServiceImpl implements HomeworkService {
 		return homeworkRepository.findById(homeworkId);
 	}
 
+	@Override
+	public Boolean editHomework(HomeworkRequestDTO dto) {
+		Homework homework = homeworkRepository.getById(dto.getId());
+		if (homework != null) {
+			if (dto.getName() != null) {
+				homework.setName(dto.getName());
+			}
+			if (dto.getDescription() != null) {
+				homework.setDescription(dto.getDescription());
+			}
+			homeworkRepository.save(homework);
+			return true;
+		}
+		return false;
+	}
+
 }

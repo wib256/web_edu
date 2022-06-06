@@ -10,4 +10,6 @@ public interface VocabularyRepository extends JpaRepository<Vocabulary, Integer>
 	Integer countById(int id);
 
 	List<Vocabulary> findByVocabulatyPartId(int vocabularyPaetId);
+
+	Vocabulary getById(int id);
 }

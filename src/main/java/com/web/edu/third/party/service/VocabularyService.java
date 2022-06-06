@@ -7,8 +7,12 @@ import com.web.edu.third.party.requestDTO.VocabularyRequestDTO;
 
 public interface VocabularyService {
 	List<Vocabulary> getAllVocabulary();
-	
+
 	List<Vocabulary> getVocabularyByVocabularyPartId(int vocabularyPartId);
 
 	Boolean createAVocabulary(VocabularyRequestDTO dto);
+
+	Boolean editVocabulary(VocabularyRequestDTO dto);
+
+	Boolean deleteVocabulary(int id);
 }

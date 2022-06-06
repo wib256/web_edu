@@ -10,4 +10,6 @@ public interface HomeworkRepository extends JpaRepository<Homework, Integer> {
 	List<Homework> findByCourseLevelId(int courseLevelId);
 
 	Homework findById(int homeworkId);
+
+	Homework getById(int id);
 }

@@ -12,4 +12,6 @@ public interface HomeworkService {
 	List<HomeworkResponseDTO> getHomeworkByCourseLevelId(int couresLevelId);
 
 	Homework getHomeworkById(int homeworkId);
+
+	Boolean editHomework(HomeworkRequestDTO dto);
 }

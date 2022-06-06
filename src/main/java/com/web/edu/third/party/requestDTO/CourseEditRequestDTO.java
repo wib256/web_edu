@@ -1,11 +1,12 @@
 package com.web.edu.third.party.requestDTO;
 
-public class HomeworkRequestDTO {
+import java.util.List;
+
+public class CourseEditRequestDTO {
 	private Integer id;
-	private Integer courseLevelId;
-	private String teacherUsername;
 	private String name;
 	private String description;
+	private List<Integer> categoties;
 
 	public Integer getId() {
 		return id;
@@ -13,22 +14,6 @@ public class HomeworkRequestDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getCourseLevelId() {
-		return courseLevelId;
-	}
-
-	public void setCourseLevelId(Integer courseLevelId) {
-		this.courseLevelId = courseLevelId;
-	}
-
-	public String getTeacherUsername() {
-		return teacherUsername;
-	}
-
-	public void setTeacherUsername(String teacherUsername) {
-		this.teacherUsername = teacherUsername;
 	}
 
 	public String getName() {
@@ -47,4 +32,11 @@ public class HomeworkRequestDTO {
 		this.description = description;
 	}
 
+	public List<Integer> getCategoties() {
+		return categoties;
+	}
+
+	public void setCategoties(List<Integer> categoties) {
+		this.categoties = categoties;
+	}
 }

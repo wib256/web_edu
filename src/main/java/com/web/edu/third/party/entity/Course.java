@@ -24,6 +24,9 @@ public class Course {
 	@Column(name = "Description")
 	private String description;
 
+	@Column(name = "Status")
+	private String status;
+
 	@OneToMany(mappedBy = "course")
 	private List<CourseCategory> courseCategories;
 
@@ -68,6 +71,14 @@ public class Course {
 
 	public void setCourseLevels(List<CourseLevel> courseLevels) {
 		this.courseLevels = courseLevels;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

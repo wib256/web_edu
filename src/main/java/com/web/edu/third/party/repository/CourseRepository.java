@@ -10,4 +10,6 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	Integer countByName(String name);
 
 	List<Course> getCoursesByName(String name);
+
+	Course getById(int id);
 }
