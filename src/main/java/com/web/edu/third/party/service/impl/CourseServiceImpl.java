@@ -93,7 +93,7 @@ public class CourseServiceImpl implements CourseService {
 		if (!courses.isEmpty()) {
 			for (Course course : courses) {
 				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
-				if (!course.getStatus().equals(Constant.DEACTIVE)) {
+				if (course.getStatus() == null || !course.getStatus().equals(Constant.DEACTIVE)) {
 					courseResponseDTO.setId(course.getId());
 					courseResponseDTO.setName(course.getName());
 					courseResponseDTO.setDescription(course.getDescription());
