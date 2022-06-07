@@ -8,4 +8,6 @@ import com.web.edu.third.party.entity.CourseLevel;
 
 public interface CourseLevelRepository extends JpaRepository<CourseLevel, Integer> {
 	List<CourseLevel> findByCourseId(int courseId);
+
+	CourseLevel getById(int id);
 }

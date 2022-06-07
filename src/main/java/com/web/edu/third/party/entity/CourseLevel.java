@@ -27,6 +27,9 @@ public class CourseLevel {
 	@Column(name = "Description")
 	private String description;
 
+	@Column(name = "Status")
+	private String status;
+
 	@Column(name = "Course_id")
 	private Integer courseId;
 
@@ -64,6 +67,14 @@ public class CourseLevel {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Integer getCourseId() {

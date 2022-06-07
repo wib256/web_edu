@@ -33,6 +33,7 @@ public class CourseServiceImpl implements CourseService {
 			Course course = new Course();
 			course.setName(dto.getName());
 			course.setDescription(dto.getDescription());
+			course.setStatus(Constant.ACTIVE);
 			Course savedCourse = courseRepository.save(course);
 			if (dto.getCategoties().size() > 0) {
 				for (int i = 0; i < dto.getCategoties().size(); i++) {
@@ -52,34 +53,36 @@ public class CourseServiceImpl implements CourseService {
 		courses = courseRepository.getCoursesByName(courseName);
 		if (!courses.isEmpty()) {
 			for (Course course : courses) {
-				CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
-				courseResponseDTO.setId(course.getId());
-				courseResponseDTO.setName(course.getName());
-				courseResponseDTO.setDescription(course.getDescription());
-				List<String> categoryName = new ArrayList<String>();
-				List<Integer> categoryId = new ArrayList<Integer>();
-				if (!course.getCourseCategories().isEmpty()) {
-					for (CourseCategory courseCategory : course.getCourseCategories()) {
-						categoryName.add(courseCategory.getCategory().getName());
-						categoryId.add(courseCategory.getCategory().getId());
+				if (course.getStatus() == null || !course.getStatus().equals(Constant.DEACTIVE)) {
+					CourseResponseDTO courseResponseDTO = new CourseResponseDTO();
+					courseResponseDTO.setId(course.getId());
+					courseResponseDTO.setName(course.getName());
+					courseResponseDTO.setDescription(course.getDescription());
+					List<String> categoryName = new ArrayList<String>();
+					List<Integer> categoryId = new ArrayList<Integer>();
+					if (!course.getCourseCategories().isEmpty()) {
+						for (CourseCategory courseCategory : course.getCourseCategories()) {
+							categoryName.add(courseCategory.getCategory().getName());
+							categoryId.add(courseCategory.getCategory().getId());
+						}
 					}
-				}
-				List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
-				if (!course.getCourseLevels().isEmpty()) {
-					for (CourseLevel courseLevel : course.getCourseLevels()) {
-						CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
-						courseLevelResponseDTO.setId(courseLevel.getId());
-						courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
-						courseLevelResponseDTO.setDescription(courseLevel.getDescription());
-						courseLevelResponseDTO.setName(courseLevel.getName());
-						courseLevelResponseDTO.setPrice(courseLevel.getPrice());
-						courseLevelResponseDTOs.add(courseLevelResponseDTO);
+					List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
+					if (!course.getCourseLevels().isEmpty()) {
+						for (CourseLevel courseLevel : course.getCourseLevels()) {
+							CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
+							courseLevelResponseDTO.setId(courseLevel.getId());
+							courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
+							courseLevelResponseDTO.setDescription(courseLevel.getDescription());
+							courseLevelResponseDTO.setName(courseLevel.getName());
+							courseLevelResponseDTO.setPrice(courseLevel.getPrice());
+							courseLevelResponseDTOs.add(courseLevelResponseDTO);
+						}
 					}
+					courseResponseDTO.setCourseLevelResponseDTOs(courseLevelResponseDTOs);
+					courseResponseDTO.setCourseCategoriesId(categoryId);
+					courseResponseDTO.setCategoryName(categoryName);
+					courseResponseDTOs.add(courseResponseDTO);
 				}
-				courseResponseDTO.setCourseLevelResponseDTOs(courseLevelResponseDTOs);
-				courseResponseDTO.setCourseCategoriesId(categoryId);
-				courseResponseDTO.setCategoryName(categoryName);
-				courseResponseDTOs.add(courseResponseDTO);
 			}
 		}
 		return courseResponseDTOs;
