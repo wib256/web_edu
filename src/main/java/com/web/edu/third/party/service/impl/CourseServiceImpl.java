@@ -111,7 +111,7 @@ public class CourseServiceImpl implements CourseService {
 					List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
 					if (!course.getCourseLevels().isEmpty()) {
 						for (CourseLevel courseLevel : course.getCourseLevels()) {
-							if (courseLevel.getStatus() == null || courseLevel.getStatus().equals(Constant.DEACTIVE)) {
+							if (courseLevel.getStatus() == null || !courseLevel.getStatus().equals(Constant.DEACTIVE)) {
 								CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
 								courseLevelResponseDTO.setId(courseLevel.getId());
 								courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
