@@ -8,4 +8,6 @@ import com.web.edu.third.party.entity.Question;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	List<Question> findByHomeworkId(int homeworkId);
+
+	Question getById(int id);
 }

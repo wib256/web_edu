@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,11 @@ public class QuestionController {
 	@PostMapping("/createQuestion")
 	public Boolean createQuestion(@RequestBody QuestionRequestDTO dto) {
 		return questionService.createQuestion(dto);
+	}
+
+	@PutMapping("/editQuestion")
+	public Boolean editQuestion(@RequestBody QuestionRequestDTO dto) {
+		return questionService.editQuestion(dto);
 	}
 
 	@PostMapping("/createListQuestion")

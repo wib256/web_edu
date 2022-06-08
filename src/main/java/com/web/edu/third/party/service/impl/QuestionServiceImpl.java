@@ -102,4 +102,36 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		return questionResponseDTOs;
 	}
+
+	@Override
+	public Boolean editQuestion(QuestionRequestDTO dto) {
+		try {
+			Question question = questionRepository.getById(dto.getId());
+			if (question != null) {
+				if (dto.getAnswerOne() != null) {
+					question.setAnswerOne(dto.getAnswerOne());
+				}
+				if (dto.getAnswerTwo() != null) {
+					question.setAnswerTwo(dto.getAnswerTwo());
+				}
+				if (dto.getAnswerThree() != null) {
+					question.setAnswerThree(dto.getAnswerThree());
+				}
+				if (dto.getAnswerFour() != null) {
+					question.setAnswerFour(dto.getAnswerFour());
+				}
+				if (dto.getCorrectAnswer() != null) {
+					question.setCorrectAnswer(dto.getCorrectAnswer());
+				}
+				if (dto.getTopic() != null) {
+					question.setTopic(dto.getTopic());
+				}
+				questionRepository.save(question);
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

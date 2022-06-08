@@ -1,6 +1,7 @@
 package com.web.edu.third.party.requestDTO;
 
 public class QuestionRequestDTO {
+	private Integer id;
 	private Integer homeworkId;
 	private String topic;
 	private String answerOne;
@@ -8,6 +9,14 @@ public class QuestionRequestDTO {
 	private String answerThree;
 	private String answerFour;
 	private String correctAnswer;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getHomeworkId() {
 		return homeworkId;

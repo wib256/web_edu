@@ -10,7 +10,9 @@ public interface QuestionService {
 
 	Boolean createListAQuestion(List<QuestionRequestDTO> dtos);
 
+	Boolean editQuestion(QuestionRequestDTO dto);
+
 	List<QuestionResponseDTO> getQuestionsByHomeworkId(int homeworkId);
-	
+
 	List<QuestionResponseDTO> checkListQuestionsByHomeworkId(int homeworkId);
 }
