@@ -69,13 +69,15 @@ public class CourseServiceImpl implements CourseService {
 					List<CourseLevelResponseDTO> courseLevelResponseDTOs = new ArrayList<CourseLevelResponseDTO>();
 					if (!course.getCourseLevels().isEmpty()) {
 						for (CourseLevel courseLevel : course.getCourseLevels()) {
-							CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
-							courseLevelResponseDTO.setId(courseLevel.getId());
-							courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
-							courseLevelResponseDTO.setDescription(courseLevel.getDescription());
-							courseLevelResponseDTO.setName(courseLevel.getName());
-							courseLevelResponseDTO.setPrice(courseLevel.getPrice());
-							courseLevelResponseDTOs.add(courseLevelResponseDTO);
+							if (course.getStatus() == null || !course.getStatus().equals(Constant.DEACTIVE)) {
+								CourseLevelResponseDTO courseLevelResponseDTO = new CourseLevelResponseDTO();
+								courseLevelResponseDTO.setId(courseLevel.getId());
+								courseLevelResponseDTO.setCourseId(courseLevel.getCourseId());
+								courseLevelResponseDTO.setDescription(courseLevel.getDescription());
+								courseLevelResponseDTO.setName(courseLevel.getName());
+								courseLevelResponseDTO.setPrice(courseLevel.getPrice());
+								courseLevelResponseDTOs.add(courseLevelResponseDTO);
+							}
 						}
 					}
 					courseResponseDTO.setCourseLevelResponseDTOs(courseLevelResponseDTOs);
