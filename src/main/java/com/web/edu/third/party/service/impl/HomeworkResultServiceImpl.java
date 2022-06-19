@@ -90,7 +90,7 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 		if (!homeworkResult.getHomework().getQuestions().isEmpty()) {
 
 			List<StudentAnswer> studentAnswers = studentAnswerService
-					.getStudentAnswersByHomeworkResultId(homeworkResult.getHomeworkId());
+					.getStudentAnswersByHomeworkResultId(homeworkResult.getId());
 			for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
 				HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 				homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
@@ -135,7 +135,7 @@ public class HomeworkResultServiceImpl implements HomeworkResultService {
 			for (HomeworkResult homeworkResult : homeworkResults) {
 				List<HomeworkResultResponse> homeworkResultResponses = new ArrayList<HomeworkResultResponse>();
 				List<StudentAnswer> studentAnswers = studentAnswerService
-						.getStudentAnswersByHomeworkResultId(homeworkResult.getHomeworkId());
+						.getStudentAnswersByHomeworkResultId(homeworkResult.getId());
 				for (int i = 0; i < homeworkResult.getHomework().getQuestions().size(); i++) {
 					HomeworkResultResponse homeworkResultResponse = new HomeworkResultResponse();
 					homeworkResultResponse.setTopic(homeworkResult.getHomework().getQuestions().get(i).getTopic());
